@@ -30,6 +30,18 @@
             </exclusions>
         </dependency>
 
+        <!-- Flowable WorkFlow -->
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-spring-boot-starter</artifactId>
+            <version>6.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-json-converter</artifactId>
+            <version>6.8.0</version>
+        </dependency>
+
         <!-- tools 模块包含了 common 和 logging 模块 -->
         <dependency>
             <groupId>me.zhengjie</groupId>

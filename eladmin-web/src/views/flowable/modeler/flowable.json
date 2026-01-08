@@ -1,0 +1,74 @@
+{
+    "name": "Flowable",
+    "uri": "http://flowable.org/bpmn",
+    "prefix": "flowable",
+    "xml": {
+        "tagAlias": "lowerCase"
+    },
+    "types": [
+        {
+            "name": "Process",
+            "superClass": [
+                "bpmn:Process"
+            ],
+            "properties": [
+                {
+                    "name": "candidateStarterGroups",
+                    "type": "String",
+                    "isAttr": true
+                },
+                {
+                    "name": "candidateStarterUsers",
+                    "type": "String",
+                    "isAttr": true
+                }
+            ]
+        },
+        {
+            "name": "UserTask",
+            "superClass": [
+                "bpmn:UserTask"
+            ],
+            "properties": [
+                {
+                    "name": "assignee",
+                    "type": "String",
+                    "isAttr": true
+                },
+                {
+                    "name": "candidateUsers",
+                    "type": "String",
+                    "isAttr": true
+                },
+                {
+                    "name": "candidateGroups",
+                    "type": "String",
+                    "isAttr": true
+                },
+                {
+                    "name": "dueDate",
+                    "type": "String",
+                    "isAttr": true
+                }
+            ]
+        },
+        {
+            "name": "StartEvent",
+            "superClass": [
+                "bpmn:StartEvent"
+            ],
+            "properties": [
+                {
+                    "name": "initiator",
+                    "type": "String",
+                    "isAttr": true
+                },
+                {
+                    "name": "formKey",
+                    "type": "String",
+                    "isAttr": true
+                }
+            ]
+        }
+    ]
+}

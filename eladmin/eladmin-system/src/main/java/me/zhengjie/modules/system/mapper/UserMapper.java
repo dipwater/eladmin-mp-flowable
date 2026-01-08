@@ -47,7 +47,8 @@ public interface UserMapper extends BaseMapper<User> {
     User findByPhone(@Param("phone") String phone);
 
     @Select("update sys_user set password = #{password} , pwd_reset_time = #{lastPasswordResetTime} where username = #{username}")
-    void updatePass(@Param("username") String username, @Param("password") String password, @Param("lastPasswordResetTime") Date lastPasswordResetTime);
+    void updatePass(@Param("username") String username, @Param("password") String password,
+            @Param("lastPasswordResetTime") Date lastPasswordResetTime);
 
     @Select("update sys_user set email = #{email} where username = #{username}")
     void updateEmail(@Param("username") String username, @Param("email") String email);
@@ -63,6 +64,12 @@ public interface UserMapper extends BaseMapper<User> {
     int countByDepts(@Param("deptIds") Set<Long> deptIds);
 
     int countByRoles(@Param("roleIds") Set<Long> roleIds);
+
+    @Select("SELECT u.* FROM sys_user u, sys_users_jobs j WHERE u.user_id = j.user_id AND j.job_id = #{jobId}")
+    List<User> findByJobId(@Param("jobId") Long jobId);
+
+    @Select("SELECT job_id FROM sys_users_jobs WHERE user_id = #{userId}")
+    Set<Long> selectJobIdsByUserId(@Param("userId") Long userId);
 
     void resetPwd(@Param("userIds") Set<Long> userIds, @Param("pwd") String pwd);
 }

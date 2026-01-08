@@ -18,7 +18,14 @@ service.interceptors.request.use(
     if (getToken()) {
       config.headers['Authorization'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     }
-    config.headers['Content-Type'] = 'application/json'
+    // headers中配置serialize为true开启序列化
+    if (config.method === 'post' && config.headers.serialize) {
+      config.data = JSON.stringify(config.data)
+      delete config.data.serialize
+    }
+    if (!(config.data instanceof FormData)) {
+      config.headers['Content-Type'] = 'application/json'
+    }
     return config
   },
   error => {

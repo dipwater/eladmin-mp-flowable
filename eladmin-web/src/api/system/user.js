@@ -65,5 +65,17 @@ export function updateEmail(form) {
   })
 }
 
-export default { add, edit, del, resetPwd }
+export function getAllUser() {
+  return request({
+    url: 'api/users',
+    method: 'get',
+    params: {
+      page: 0,
+      size: 9999,
+      enabled: true
+    }
+  })
+}
+
+export default { add, edit, del, resetPwd, getAllUser }
 
